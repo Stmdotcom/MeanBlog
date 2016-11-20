@@ -37,7 +37,7 @@
                         Created At: {{$apost->created_at}}
                         </div>
                             <div class="col-md-4">
-                                <a href="{{ url('/edit/' . $apost->id) }}">Edit</a>
+                                <a href="{{ url('/edit/' . $apost->id) }}">Edit</a>    <a href="{{ url('/delete/' . $apost->id) }}">Delete</a>
                             </div>
                         </div>
                      @endforeach

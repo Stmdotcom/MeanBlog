@@ -5779,6 +5779,8 @@ button.close {
   display: inline-block; }
 
 .alert-close {
+  color: red;
+  float: right;
   margin-right: 10%; }
 
 /*# sourceMappingURL=app.css.map */

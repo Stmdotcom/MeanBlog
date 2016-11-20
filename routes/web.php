@@ -1,25 +1,14 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
 use App\Post;
 
-//Main Page
+//Main display to show posts to visitors
 Route::get('/', function () {
     $posts = Post::all();
     return view('blogmain')->with('posts',$posts);
 });
 
-//Admin portal
+//Create Post page
 Route::get('/create', function () {
     if(!Auth::check()){
         abort(403,"Unauthorized");
@@ -27,8 +16,7 @@ Route::get('/create', function () {
     return view('create');
 });
 
-Route::post('/create', 'PostController@create');
-
+//Edit Post page
 Route::get('/edit/{id}', function ($id) {
     if(!Auth::check()){
         abort(403,"Unauthorized");
@@ -40,7 +28,14 @@ Route::get('/edit/{id}', function ($id) {
     return view('edit')->with('existingpost',$post);
 });
 
+//Delete Post GET
+Route::get('/delete/{id}', 'PostController@delete');
+
+//Edit Post POST (Didn't use PUT because of HTML Form issues)
 Route::post('/edit/{id}', 'PostController@update');
+
+//Create Post POST
+Route::post('/create', 'PostController@create');
 
 Auth::routes();
 

@@ -14,6 +14,16 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
+    public function delete(Request $request, $id)
+    {
+        $post = Auth::user()->posts->where('id',$id)->first();
+        if (!$post->id){
+            abort(403,"Unauthorized");
+        }
+        $post->delete();
+        return redirect('home')->with('successmessage',"Post Deleted");
+    }
+
     public function update(Request $request, $id)
     {
         $post = Auth::user()->posts->where('id',$id)->first();
