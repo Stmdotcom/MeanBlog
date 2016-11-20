@@ -1,0 +1,28 @@
+
+.meanblog-postblock {
+  .meanblog-footer {
+    font-style: italic;
+    color: lightgrey;
+    .float-left {
+      float: left;
+    }
+    .float-right {
+      float: right;
+    }
+  }
+
+  .meanblog-body {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.meanblog-editblock{
+
+}
+
+.alert-close{
+  color: red;
+  float: right;
+  margin-right: 10%;
+}
